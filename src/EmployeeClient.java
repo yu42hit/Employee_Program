@@ -73,7 +73,7 @@ public class EmployeeClient {
 
         while (t) {
 
-            int choice = JOptionPane.showOptionDialog(null, main + "\n" + arg, "MANAGER | BUDGET MENU", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new String[]{"CALC SALARY", "EDIT HOURS WORKED","EDIT SALARY", "EDIT BUDGET", "HELP", "GO BACK"}, null);
+            int choice = JOptionPane.showOptionDialog(null, main + "\n" + arg, "MANAGER | BUDGET MENU", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new String[]{"CALC SALARY", "EDIT HOURS WORKED", "EDIT SALARY", "EDIT BUDGET", "HELP", "GO BACK"}, null);
 
             switch (choice) {
 
@@ -182,7 +182,7 @@ public class EmployeeClient {
         }
     }
 
-    static void editHoursWorked(){
+    static void editHoursWorked() {
 
         double a = 0;
         boolean t = true;
@@ -224,7 +224,7 @@ public class EmployeeClient {
 
         int a = JOptionPane.showOptionDialog(null, b, "MANAGER | CALCULATE SALARY", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, JOptionPane.YES_OPTION);
 
-        switch (a){
+        switch (a) {
 
             case JOptionPane.YES_OPTION:
                 main.setSalary(arg.getSalary());
@@ -251,11 +251,11 @@ public class EmployeeClient {
 
         boolean t = true;
 
-        while(t) {
+        while (t) {
 
             int choice = JOptionPane.showOptionDialog(null, "Amount of Employees: " + employee.size(), "MANAGER | EMPLOYEE MENU", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new String[]{"VIEW EMPLOYEES", "REMOVE EMPLOYEE", "EDIT EMPLOYEE", "ADD EMPLOYEE", "HELP", "GO BACK"}, null);
 
-            switch(choice){
+            switch (choice) {
 
                 case 0:
                     viewEmployee();
@@ -317,7 +317,7 @@ public class EmployeeClient {
 
         int b = JOptionPane.showOptionDialog(null, temp + "\n\nWould You Like to Create This Employee?", "MANAGER | CONFIRM EMPLOYEE", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
-        switch (b){
+        switch (b) {
 
             case JOptionPane.YES_OPTION:
                 employee.add(new Employee(temp));
@@ -348,7 +348,7 @@ public class EmployeeClient {
         a = (String) JOptionPane.showInputDialog(null, "Please Enter Department:", "MANAGER | ENTER DEPARTMENT", JOptionPane.PLAIN_MESSAGE, null, null, temp.getDepartment());
         temp.setDepartment(a.isEmpty() ? "Not Entered" : a);
 
-        a = (String) JOptionPane.showInputDialog(null, "Please Enter Phone Number:","MANAGER | ENTER PHONE NUMBER", JOptionPane.PLAIN_MESSAGE, null, null, temp.getPhone());
+        a = (String) JOptionPane.showInputDialog(null, "Please Enter Phone Number:", "MANAGER | ENTER PHONE NUMBER", JOptionPane.PLAIN_MESSAGE, null, null, temp.getPhone());
         temp.setPhone(a.isEmpty() ? "Not Entered" : a);
 
         a = (String) JOptionPane.showInputDialog(null, "Please Enter Home Address:", "MANAGER | ENTER ADDRESS", JOptionPane.PLAIN_MESSAGE, null, null, temp.getAddress());
@@ -357,12 +357,12 @@ public class EmployeeClient {
         a = (String) JOptionPane.showInputDialog(null, "Please Enter Email:", "MANAGER | ENTER EMAIL", JOptionPane.PLAIN_MESSAGE, null, null, temp.getEmail());
         temp.setEmail(a.isEmpty() ? "Not Entered" : a);
 
-        a = (String) JOptionPane.showInputDialog(null, "Please Enter Position:", "MANAGER | ENTER POSITION", JOptionPane.PLAIN_MESSAGE, null, null,temp.getPosition());
+        a = (String) JOptionPane.showInputDialog(null, "Please Enter Position:", "MANAGER | ENTER POSITION", JOptionPane.PLAIN_MESSAGE, null, null, temp.getPosition());
         temp.setPosition(a.isEmpty() ? "Not Entered" : a);
 
         int b = JOptionPane.showOptionDialog(null, temp + "\n\nWould You Like to Edit This Employee?", "MANAGER | CONFIRM EMPLOYEE", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
-        switch (b){
+        switch (b) {
 
             case JOptionPane.YES_OPTION:
                 employee.set(val, new Employee(temp));
@@ -377,8 +377,23 @@ public class EmployeeClient {
 
     static void removeEmployee() {
 
-        String s = employeeList();
+            String s = employeeList();
 
+            String a = JOptionPane.showInputDialog(null, s + "\n\nPlease Enter the Number Corresponding to the Employee to Delete it:", "MANAGER | REMOVE EMPLOYEE", JOptionPane.PLAIN_MESSAGE);
+            int val = (Integer.parseInt(a)) - 1;
+
+            int b = JOptionPane.showOptionDialog(null, "\n\nWould You Like to Remove This Employee?", "MANAGER | CONFIRM DELETE", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+
+            switch (b) {
+
+                case JOptionPane.YES_OPTION:
+                    employee.remove(val);
+                    break;
+
+                default:
+                    break;
+
+        }
 
     }
 
@@ -398,7 +413,7 @@ public class EmployeeClient {
 
     }
 
-    public static String employeeList(){
+    public static String employeeList() {
 
         int val = 0;
         String s = "";
@@ -413,7 +428,6 @@ public class EmployeeClient {
         return s;
 
     }
-
 
 
 }
